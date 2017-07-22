@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">"Inventory App "</string>
+    <string name="empty_view_title">Your inventory is empty...</string>
+    <string name="empty_view_subtitle">Get started by adding new items</string>
+    <string name="action_delete_all_entries">Delete All Items</string>
+    <string name="editor_activity_title_new_item">Add new item</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="editor_no_available_products">Product is not available</string>
+    <string name="adapter_update_product_failed">Sell process is failed</string>
+    <string name="adapter_update_product_successful">Succesfully sold</string>
+    <string name="unknown_price">Unknown price</string>
+    <string name="editor_activity_title_new_product">Add new item</string>
+    <string name="editor_activity_title_edit_product">Edit item</string>
+    <string name="editor_insert_item_failed">Error with saving item</string>
+    <string name="editor_insert_item_successful">Item saved</string>
+    <string name="editor_update_item_failed">Error with updating item</string>
+    <string name="editor_update_item_successful">Item updated</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
+    <string name="delete_dialog_msg">Delete this item?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="editor_delete_product_failed">Delete failed</string>
+    <string name="editor_delete_product_successful">Delete succesfully</string>
+    <string name="delete_all_dialog_msg">Delete all items in catalog?</string>
+    <string name="editor_required_fields">Required fields</string>
+    <string name="editor_image_not_inserted">Insert an image</string>
+    <string name="editor_insert_product_failed">Failed</string>
+    <string name="editor_insert_product_successful">Saved</string>
+    <string name="editor_update_product_failed">Update failed</string>
+    <string name="editor_update_product_successful">Updated succesfully</string>
+</resources>
