@@ -23,17 +23,17 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.data.InventoryContract.InventoryEntry;
 
 
-public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{
+public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
     private static final int INVENTORY_LOADER = 0;
     ItemsCursorAdapter mCursorAdapter;
-    public static final String LOG_TAG = CatalogActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
 
         //Binding listview
 
-        ListView listView = (ListView)findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.list);
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
         mCursorAdapter = new ItemsCursorAdapter(this, null);
@@ -56,19 +56,16 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Log.i("Onitemclick listener" , "============>  catalogActivity");
-                Toast.makeText(getApplicationContext(),"Item clicked",Toast.LENGTH_SHORT).show();
+                Log.i("Onitemclick listener", "============>  catalogActivity");
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
-                Uri currentItemUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI,id);
+                Uri currentItemUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
                 intent.setData(currentItemUri);
 
                 startActivity(intent);
             }
         });
 
-
-            }
-
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,6 +74,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
         getMenuInflater().inflate(R.menu.menu_catalog, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
@@ -90,14 +88,13 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void deleteAllPets() {
         int rowsDeleted = getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
 
-        Toast.makeText(getApplicationContext(),"All items deleted" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "All items deleted", Toast.LENGTH_SHORT).show();
     }
-
-
 
 
     @Override
@@ -128,6 +125,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
         mCursorAdapter.swapCursor(null);
 
     }
+
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.

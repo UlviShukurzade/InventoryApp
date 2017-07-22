@@ -18,11 +18,7 @@ import com.example.android.inventoryapp.data.InventoryContract.InventoryEntry;
  */
 
 
-
 public class InventoryProvider extends ContentProvider {
-
-
-    private InventoryDbHelper mDbHelper;
 
 
     public static final String LOG_TAG = InventoryProvider.class.getSimpleName();
@@ -61,6 +57,7 @@ public class InventoryProvider extends ContentProvider {
         sUriMatcher.addURI(InventoryContract.CONTENT_AUTHORITY, InventoryContract.PATH_INVENTORY + "/#", ITEM_ID);
     }
 
+    private InventoryDbHelper mDbHelper;
 
     /**
      * Initialize the provider and the database helper object.
@@ -104,7 +101,6 @@ public class InventoryProvider extends ContentProvider {
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
-
 
 
     @Nullable

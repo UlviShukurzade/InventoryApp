@@ -355,8 +355,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 InventoryEntry.COLUMN_ITEM_NAME,
                 InventoryEntry.COLUMN_ITEM_QUANTITY,
                 InventoryEntry.COLUMN_ITEM_PRICE,
-                InventoryEntry.COLUMN_SUPPLIER};
-        //  PolaroidEntry.COLUMN_POLAROID_PICTURE};
+                InventoryEntry.COLUMN_SUPPLIER,
+                InventoryEntry.COLUMN_PICTURE};
 
         // This loader will execute the ContentProvider's query method on a background thread
         return new CursorLoader(this,   // Parent activity context
@@ -390,6 +390,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Uri imageUri = Uri.parse(pictureUriString);
                 Bitmap imageBitmap = getBitmapFromUri(imageUri);
                 mProductImage.setImageBitmap(imageBitmap);
+                mUri= imageUri;
+
             } else {
                 Log.v(LOG_TAG, getString(R.string.editor_image_not_inserted));
             }
@@ -399,6 +401,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mQuantityEditText.setText(Integer.toString(quantity));
             mPriceEditText.setText(Integer.toString(price));
             mSupplierEditText.setText(supplier);
+/*
+            mProductImage.setImageBitmap(getBitmapFromUri(mUri));
+*/
+
         }
 
     }

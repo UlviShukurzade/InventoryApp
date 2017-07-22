@@ -21,10 +21,12 @@ import com.example.android.inventoryapp.data.InventoryContract.InventoryEntry;
  * Created by User on 21/07/2017.
  */
 
-public class ItemsCursorAdapter extends CursorAdapter{
+public class ItemsCursorAdapter extends CursorAdapter {
     public static final String LOG_TAG = ItemsCursorAdapter.class.getSimpleName();
 
-    public ItemsCursorAdapter(Context contex, Cursor c){super(contex,c,0);}
+    public ItemsCursorAdapter(Context contex, Cursor c) {
+        super(contex, c, 0);
+    }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -35,10 +37,10 @@ public class ItemsCursorAdapter extends CursorAdapter{
     @Override
     public void bindView(View view, Context context, final Cursor cursor) {
 
-        TextView tvName = (TextView)view.findViewById(R.id.name);
-        final TextView tvQuantity = (TextView)view.findViewById(R.id.quantity);
-        TextView tvPrice = (TextView)view.findViewById(R.id.price);
-        Button sellButton = (Button)view.findViewById(R.id.sellButton);
+        TextView tvName = (TextView) view.findViewById(R.id.name);
+        final TextView tvQuantity = (TextView) view.findViewById(R.id.quantity);
+        TextView tvPrice = (TextView) view.findViewById(R.id.price);
+        Button sellButton = (Button) view.findViewById(R.id.sellButton);
 
 
         String name = cursor.getString(cursor.getColumnIndex(InventoryEntry.COLUMN_ITEM_NAME));
@@ -61,12 +63,12 @@ public class ItemsCursorAdapter extends CursorAdapter{
                 ContentValues values = new ContentValues();
 
                 int quantity = Integer.parseInt(tvQuantity.getText().toString());
-                quantity-=1;
-                if (quantity<0){
-                    quantity=0;
-                    Toast.makeText(view.getContext(),view.getContext().getString(R.string.editor_no_available_products), Toast.LENGTH_SHORT).show();
+                quantity -= 1;
+                if (quantity < 0) {
+                    quantity = 0;
+                    Toast.makeText(view.getContext(), view.getContext().getString(R.string.editor_no_available_products), Toast.LENGTH_SHORT).show();
                 }
-                values.put(InventoryEntry.COLUMN_ITEM_QUANTITY,quantity);
+                values.put(InventoryEntry.COLUMN_ITEM_QUANTITY, quantity);
                 int rowsAffected = view.getContext().getContentResolver().update(uri, values, null, null);
                 if (rowsAffected == 0) {
                     // If no rows were affected, then there was an error with the update.
